@@ -1,0 +1,29 @@
+{
+  "kind": "singleType",
+  "collectionName": "project_views",
+  "info": {
+    "singularName": "project-view",
+    "pluralName": "project-views",
+    "displayName": "Project_view"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "user_id": {
+      "type": "biginteger"
+    },
+    "feedback": {
+      "type": "text"
+    },
+    "is_publish": {
+      "type": "boolean"
+    },
+    "publish_date": {
+      "type": "datetime"
+    },
+    "ApprovalStatus": {
+      "type": "string"
+    }
+  }
+}
