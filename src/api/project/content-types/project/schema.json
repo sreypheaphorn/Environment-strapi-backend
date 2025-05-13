@@ -37,11 +37,11 @@
       "type": "datetime",
       "required": false
     },
-    "users_permissio_users": {
+    "users_permissions_users": {
       "type": "relation",
-      "relation": "manyToOne",
+      "relation": "oneToMany",
       "target": "plugin::users-permissions.user",
-      "inversedBy": "projects"
+      "mappedBy": "project"
     },
     "category": {
       "type": "relation",

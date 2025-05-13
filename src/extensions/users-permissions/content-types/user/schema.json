@@ -71,11 +71,11 @@
       "target": "api::test-project.test-project",
       "inversedBy": "users_permissions_users"
     },
-    "projects": {
+    "project": {
       "type": "relation",
-      "relation": "oneToMany",
+      "relation": "manyToOne",
       "target": "api::project.project",
-      "mappedBy": "users_permissio_users"
+      "inversedBy": "users_permissions_users"
     }
   }
 }
