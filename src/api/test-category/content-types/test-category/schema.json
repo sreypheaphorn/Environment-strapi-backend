@@ -1,0 +1,22 @@
+{
+  "kind": "collectionType",
+  "collectionName": "test_categories",
+  "info": {
+    "singularName": "test-category",
+    "pluralName": "test-categories",
+    "displayName": "TestCategory"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "category_name": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "description": {
+      "type": "text"
+    }
+  }
+}

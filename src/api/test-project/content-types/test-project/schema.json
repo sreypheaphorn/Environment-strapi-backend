@@ -1,0 +1,52 @@
+{
+  "kind": "collectionType",
+  "collectionName": "test_projects",
+  "info": {
+    "singularName": "test-project",
+    "pluralName": "test-projects",
+    "displayName": "TestProject",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": false
+    },
+    "short_description": {
+      "type": "text",
+      "required": true
+    },
+    "content": {
+      "type": "text",
+      "required": true
+    },
+    "users_permissions_users": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "plugin::users-permissions.user",
+      "mappedBy": "test_project"
+    },
+    "project_status": {
+      "type": "enumeration",
+      "enum": [
+        "Pending",
+        "Reject",
+        "Review",
+        "Approve"
+      ],
+      "required": true,
+      "default": "Pending"
+    },
+    "publish_date": {
+      "type": "datetime"
+    },
+    "test_category": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::test-category.test-category"
+    }
+  }
+}

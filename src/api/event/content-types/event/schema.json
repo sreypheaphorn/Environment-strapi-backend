@@ -1,29 +1,29 @@
 {
-  "kind": "singleType",
+  "kind": "collectionType",
   "collectionName": "events",
   "info": {
     "singularName": "event",
     "pluralName": "events",
-    "displayName": "event"
+    "displayName": "Event"
   },
   "options": {
     "draftAndPublish": true
   },
   "attributes": {
-    "Title": {
+    "title": {
       "type": "text"
     },
-    "Description": {
+    "description": {
       "type": "text"
-    },
-    "date": {
-      "type": "date"
-    },
-    "time": {
-      "type": "time"
     },
     "location": {
       "type": "text"
+    },
+    "start_time": {
+      "type": "datetime"
+    },
+    "end_time": {
+      "type": "datetime"
     }
   }
 }

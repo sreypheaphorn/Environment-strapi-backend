@@ -1,0 +1,52 @@
+{
+  "kind": "collectionType",
+  "collectionName": "projects",
+  "info": {
+    "singularName": "project",
+    "pluralName": "projects",
+    "displayName": "Project",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "title": {
+      "type": "text",
+      "required": true
+    },
+    "short_description": {
+      "type": "string",
+      "required": true
+    },
+    "content": {
+      "type": "text",
+      "required": true
+    },
+    "project_status": {
+      "type": "enumeration",
+      "enum": [
+        "padding",
+        "rejected",
+        "view",
+        "approved"
+      ],
+      "default": "padding"
+    },
+    "publish_date": {
+      "type": "datetime",
+      "required": false
+    },
+    "users_permissio_users": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "projects"
+    },
+    "category": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::category.category"
+    }
+  }
+}
