@@ -1,0 +1,38 @@
+{
+  "kind": "collectionType",
+  "collectionName": "project_lists",
+  "info": {
+    "singularName": "project-list",
+    "pluralName": "project-lists",
+    "displayName": "Project_list",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "media": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "silde": {
+      "type": "string"
+    },
+    "project_id": {
+      "type": "biginteger"
+    },
+    "project": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::project.project",
+      "inversedBy": "project_list"
+    }
+  }
+}
