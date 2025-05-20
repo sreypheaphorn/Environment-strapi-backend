@@ -58,6 +58,23 @@
         "videos",
         "audios"
       ]
+
+    "Project_list": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::category.category",
+      "inversedBy": "projects"
+    },
+    "project_lists": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::project-list.project-list"
+    },
+    "project_list": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::project-list.project-list",
+      "mappedBy": "project"
     }
   }
 }
