@@ -4,14 +4,24 @@
   "info": {
     "singularName": "event",
     "pluralName": "events",
-    "displayName": "Event"
+    "displayName": "Event",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
   },
   "attributes": {
-    "title": {
-      "type": "text"
+    "cover_image": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "Title": {
+      "type": "string",
+      "required": true
     },
     "description": {
       "type": "text"
@@ -20,10 +30,27 @@
       "type": "text"
     },
     "start_time": {
-      "type": "datetime"
+      "type": "date"
     },
     "end_time": {
+      "type": "date"
+    },
+    "publish_date": {
       "type": "datetime"
+    },
+    "publish_by": {
+      "type": "string",
+      "required": true
+    },
+    "attachments": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": true
     }
   }
 }
