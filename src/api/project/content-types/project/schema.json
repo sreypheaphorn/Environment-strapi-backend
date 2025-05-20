@@ -12,7 +12,7 @@
   },
   "attributes": {
     "title": {
-      "type": "text",
+      "type": "string",
       "required": true
     },
     "short_description": {
@@ -48,6 +48,17 @@
       "relation": "oneToOne",
       "target": "api::category.category"
     },
+    "attachments": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+
     "Project_list": {
       "type": "relation",
       "relation": "manyToMany",

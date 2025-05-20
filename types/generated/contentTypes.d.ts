@@ -405,6 +405,7 @@ export interface ApiCategoryCategory extends Struct.CollectionTypeSchema {
 export interface ApiEventEvent extends Struct.CollectionTypeSchema {
   collectionName: 'events';
   info: {
+    description: '';
     displayName: 'Event';
     pluralName: 'events';
     singularName: 'event';
@@ -413,18 +414,25 @@ export interface ApiEventEvent extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
+    attachments: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios',
+      true
+    >;
+    cover_image: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     description: Schema.Attribute.Text;
-    end_time: Schema.Attribute.DateTime;
+    end_time: Schema.Attribute.Date;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::event.event'> &
       Schema.Attribute.Private;
     location: Schema.Attribute.Text;
+    publish_by: Schema.Attribute.String & Schema.Attribute.Required;
+    publish_date: Schema.Attribute.DateTime;
     publishedAt: Schema.Attribute.DateTime;
-    start_time: Schema.Attribute.DateTime;
-    title: Schema.Attribute.Text;
+    start_time: Schema.Attribute.Date;
+    Title: Schema.Attribute.String & Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -510,6 +518,10 @@ export interface ApiProjectProject extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
+    attachments: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios',
+      true
+    >;
     category: Schema.Attribute.Relation<'oneToOne', 'api::category.category'>;
     content: Schema.Attribute.Text & Schema.Attribute.Required;
     createdAt: Schema.Attribute.DateTime;
@@ -540,7 +552,7 @@ export interface ApiProjectProject extends Struct.CollectionTypeSchema {
     publish_date: Schema.Attribute.DateTime;
     publishedAt: Schema.Attribute.DateTime;
     short_description: Schema.Attribute.String & Schema.Attribute.Required;
-    title: Schema.Attribute.Text & Schema.Attribute.Required;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
