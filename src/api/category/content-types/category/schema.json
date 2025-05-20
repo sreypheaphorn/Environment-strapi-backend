@@ -17,14 +17,13 @@
       "unique": true
     },
     "description": {
-      "type": "text",
-      "required": false
+      "type": "text"
     },
     "projects": {
       "type": "relation",
       "relation": "manyToMany",
       "target": "api::project.project",
-      "mappedBy": "Project_list"
+      "inversedBy": "categories"
     }
   }
 }

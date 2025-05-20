@@ -34,8 +34,7 @@
       "default": "padding"
     },
     "publish_date": {
-      "type": "datetime",
-      "required": false
+      "type": "datetime"
     },
     "users_permissions_users": {
       "type": "relation",
@@ -43,38 +42,21 @@
       "target": "plugin::users-permissions.user",
       "mappedBy": "project"
     },
-    "category": {
+    "categories": {
       "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::category.category"
+      "relation": "manyToMany",
+      "target": "api::category.category",
+      "mappedBy": "projects"
     },
     "attachments": {
       "type": "media",
       "multiple": true,
-      "required": false,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
       ]
-
-    "Project_list": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::category.category",
-      "inversedBy": "projects"
-    },
-    "project_lists": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::project-list.project-list"
-    },
-    "project_list": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::project-list.project-list",
-      "mappedBy": "project"
     }
   }
 }
