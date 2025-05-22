@@ -27,12 +27,6 @@
     },
     "project_id": {
       "type": "biginteger"
-    },
-    "project": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::project.project",
-      "inversedBy": "project_list"
     }
   }
 }
