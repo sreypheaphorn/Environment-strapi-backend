@@ -394,6 +394,7 @@ export interface ApiCategoryCategory extends Struct.CollectionTypeSchema {
       'api::category.category'
     > &
       Schema.Attribute.Private;
+    projects: Schema.Attribute.Relation<'manyToMany', 'api::project.project'>;
     publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -463,6 +464,7 @@ export interface ApiProjectListProjectList extends Struct.CollectionTypeSchema {
       'images' | 'files' | 'videos' | 'audios',
       true
     >;
+    project: Schema.Attribute.Relation<'oneToOne', 'api::project.project'>;
     project_id: Schema.Attribute.BigInteger;
     publishedAt: Schema.Attribute.DateTime;
     silde: Schema.Attribute.String;
@@ -534,6 +536,18 @@ export interface ApiProjectProject extends Struct.CollectionTypeSchema {
       'api::project.project'
     > &
       Schema.Attribute.Private;
+    project_list: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::project-list.project-list'
+    >;
+    Project_list: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::category.category'
+    >;
+    project_lists: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::project-list.project-list'
+    >;
     project_status: Schema.Attribute.Enumeration<
       ['padding', 'rejected', 'view', 'approved']
     > &
