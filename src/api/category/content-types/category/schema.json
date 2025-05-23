@@ -4,8 +4,7 @@
   "info": {
     "singularName": "category",
     "pluralName": "categories",
-    "displayName": "Category",
-    "description": ""
+    "displayName": "Category"
   },
   "options": {
     "draftAndPublish": true
@@ -17,14 +16,7 @@
       "unique": true
     },
     "description": {
-      "type": "text",
-      "required": false
-    },
-    "projects": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::project.project",
-      "mappedBy": "Project_list"
+      "type": "string"
     }
   }
 }
