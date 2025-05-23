@@ -372,7 +372,6 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
 export interface ApiCategoryCategory extends Struct.CollectionTypeSchema {
   collectionName: 'categories';
   info: {
-    description: '';
     displayName: 'Category';
     pluralName: 'categories';
     singularName: 'category';
@@ -387,14 +386,13 @@ export interface ApiCategoryCategory extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    description: Schema.Attribute.Text;
+    description: Schema.Attribute.String;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
       'api::category.category'
     > &
       Schema.Attribute.Private;
-    projects: Schema.Attribute.Relation<'manyToMany', 'api::project.project'>;
     publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -433,41 +431,6 @@ export interface ApiEventEvent extends Struct.CollectionTypeSchema {
     publishedAt: Schema.Attribute.DateTime;
     start_time: Schema.Attribute.Date;
     Title: Schema.Attribute.String & Schema.Attribute.Required;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-  };
-}
-
-export interface ApiProjectListProjectList extends Struct.CollectionTypeSchema {
-  collectionName: 'project_lists';
-  info: {
-    description: '';
-    displayName: 'Project_list';
-    pluralName: 'project-lists';
-    singularName: 'project-list';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::project-list.project-list'
-    > &
-      Schema.Attribute.Private;
-    media: Schema.Attribute.Media<
-      'images' | 'files' | 'videos' | 'audios',
-      true
-    >;
-    project: Schema.Attribute.Relation<'oneToOne', 'api::project.project'>;
-    project_id: Schema.Attribute.BigInteger;
-    publishedAt: Schema.Attribute.DateTime;
-    silde: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -522,10 +485,7 @@ export interface ApiProjectProject extends Struct.CollectionTypeSchema {
       'images' | 'files' | 'videos' | 'audios',
       true
     >;
-    categories: Schema.Attribute.Relation<
-      'manyToMany',
-      'api::category.category'
-    >;
+    category: Schema.Attribute.Relation<'oneToOne', 'api::category.category'>;
     content: Schema.Attribute.Text & Schema.Attribute.Required;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -536,18 +496,6 @@ export interface ApiProjectProject extends Struct.CollectionTypeSchema {
       'api::project.project'
     > &
       Schema.Attribute.Private;
-    project_list: Schema.Attribute.Relation<
-      'oneToOne',
-      'api::project-list.project-list'
-    >;
-    Project_list: Schema.Attribute.Relation<
-      'manyToMany',
-      'api::category.category'
-    >;
-    project_lists: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::project-list.project-list'
-    >;
     project_status: Schema.Attribute.Enumeration<
       ['padding', 'rejected', 'view', 'approved']
     > &
@@ -1158,7 +1106,6 @@ declare module '@strapi/strapi' {
       'admin::user': AdminUser;
       'api::category.category': ApiCategoryCategory;
       'api::event.event': ApiEventEvent;
-      'api::project-list.project-list': ApiProjectListProjectList;
       'api::project-view.project-view': ApiProjectViewProjectView;
       'api::project.project': ApiProjectProject;
       'api::test-category.test-category': ApiTestCategoryTestCategory;
