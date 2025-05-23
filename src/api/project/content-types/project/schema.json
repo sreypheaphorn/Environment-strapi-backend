@@ -42,21 +42,20 @@
       "target": "plugin::users-permissions.user",
       "mappedBy": "project"
     },
+    "category": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::category.category"
+    },
     "attachments": {
-      "type": "media",
-      "multiple": true,
-      "required": false,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ]
-    },
-    "category": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::category.category"
+      ],
+      "type": "media",
+      "multiple": true
     }
   }
 }
