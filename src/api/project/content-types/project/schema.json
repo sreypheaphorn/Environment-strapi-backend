@@ -48,14 +48,27 @@
       "target": "api::category.category"
     },
     "attachments": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ],
-      "type": "media",
-      "multiple": true
+      ]
+    },
+    "publish_by": {
+      "type": "string",
+      "required": true
+    },
+    "number": {
+      "type": "biginteger",
+      "required": true
+    },
+    "title_number": {
+      "type": "string",
+      "required": true
     }
   }
 }

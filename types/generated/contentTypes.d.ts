@@ -561,14 +561,17 @@ export interface ApiProjectProject extends Struct.CollectionTypeSchema {
       'api::project.project'
     > &
       Schema.Attribute.Private;
+    number: Schema.Attribute.BigInteger & Schema.Attribute.Required;
     project_status: Schema.Attribute.Enumeration<
       ['padding', 'rejected', 'view', 'approved']
     > &
       Schema.Attribute.DefaultTo<'padding'>;
+    publish_by: Schema.Attribute.String & Schema.Attribute.Required;
     publish_date: Schema.Attribute.DateTime;
     publishedAt: Schema.Attribute.DateTime;
     short_description: Schema.Attribute.String & Schema.Attribute.Required;
     title: Schema.Attribute.String & Schema.Attribute.Required;
+    title_number: Schema.Attribute.String & Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
