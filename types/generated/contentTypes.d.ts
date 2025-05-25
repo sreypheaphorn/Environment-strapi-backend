@@ -410,9 +410,9 @@ export interface ApiCategoryCategory extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
-    category: Schema.Attribute.Enumeration<
-      ['Food', 'Water', 'Biodiversity', 'Energy', 'Others']
-    >;
+    category_name: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -446,21 +446,25 @@ export interface ApiEventEvent extends Struct.CollectionTypeSchema {
       'images' | 'files' | 'videos' | 'audios',
       true
     >;
-    cover_image: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     description: Schema.Attribute.Text;
-    end_time: Schema.Attribute.Date;
+    end_time: Schema.Attribute.DateTime;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::event.event'> &
       Schema.Attribute.Private;
-    location: Schema.Attribute.Text;
+    location: Schema.Attribute.String;
+    manager: Schema.Attribute.String & Schema.Attribute.Required;
+    number_participants: Schema.Attribute.BigInteger &
+      Schema.Attribute.Required;
+    participants: Schema.Attribute.BigInteger & Schema.Attribute.Required;
     publish_by: Schema.Attribute.String & Schema.Attribute.Required;
     publish_date: Schema.Attribute.DateTime;
     publishedAt: Schema.Attribute.DateTime;
-    start_time: Schema.Attribute.Date;
-    Title: Schema.Attribute.String & Schema.Attribute.Required;
+    purpose: Schema.Attribute.Text & Schema.Attribute.Required;
+    start_time: Schema.Attribute.DateTime;
+    title: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;

@@ -11,29 +11,47 @@
     "draftAndPublish": true
   },
   "attributes": {
-    "cover_image": {
-      "type": "media",
-      "multiple": false,
-      "required": true,
-      "allowedTypes": [
-        "images"
-      ]
-    },
-    "Title": {
-      "type": "string",
-      "required": true
+    "title": {
+      "type": "string"
     },
     "description": {
       "type": "text"
     },
+    "purpose": {
+      "type": "text",
+      "required": true
+    },
+    "attachments": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "manager": {
+      "type": "string",
+      "required": true
+    },
     "location": {
-      "type": "text"
+      "type": "string"
+    },
+    "participants": {
+      "type": "biginteger",
+      "required": true
+    },
+    "number_participants": {
+      "type": "biginteger",
+      "required": true
     },
     "start_time": {
-      "type": "date"
+      "type": "datetime"
     },
     "end_time": {
-      "type": "date"
+      "type": "datetime"
     },
     "publish_date": {
       "type": "datetime"
@@ -41,16 +59,6 @@
     "publish_by": {
       "type": "string",
       "required": true
-    },
-    "attachments": {
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
-      ],
-      "type": "media",
-      "multiple": true
     }
   }
 }

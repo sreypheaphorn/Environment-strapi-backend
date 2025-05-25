@@ -10,23 +10,12 @@
     "draftAndPublish": true
   },
   "attributes": {
+    "category_name": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
     "description": {
-      "type": "text"
-    },
-    "projects": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::project.project",
-      "inversedBy": "categories"
-    },
-    "category": {
-      "enum": [
-        "Food",
-        "Water",
-        "Biodiversity",
-        "Energy",
-        "Others"
-      ],
       "type": "string"
     }
   }
