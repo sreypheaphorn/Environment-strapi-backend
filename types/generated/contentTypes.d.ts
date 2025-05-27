@@ -445,7 +445,8 @@ export interface ApiEventEvent extends Struct.CollectionTypeSchema {
     attachments: Schema.Attribute.Media<
       'images' | 'files' | 'videos' | 'audios',
       true
-    >;
+    > &
+      Schema.Attribute.Required;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -455,16 +456,16 @@ export interface ApiEventEvent extends Struct.CollectionTypeSchema {
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::event.event'> &
       Schema.Attribute.Private;
     location: Schema.Attribute.String;
-    manager: Schema.Attribute.String & Schema.Attribute.Required;
+    manager: Schema.Attribute.String;
     number_participants: Schema.Attribute.BigInteger &
       Schema.Attribute.Required;
-    participants: Schema.Attribute.BigInteger & Schema.Attribute.Required;
-    publish_by: Schema.Attribute.String & Schema.Attribute.Required;
+    participants: Schema.Attribute.BigInteger;
+    publish_by: Schema.Attribute.String;
     publish_date: Schema.Attribute.DateTime;
     publishedAt: Schema.Attribute.DateTime;
     purpose: Schema.Attribute.Text & Schema.Attribute.Required;
     start_time: Schema.Attribute.DateTime;
-    title: Schema.Attribute.String;
+    Title: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -561,17 +562,17 @@ export interface ApiProjectProject extends Struct.CollectionTypeSchema {
       'api::project.project'
     > &
       Schema.Attribute.Private;
-    number: Schema.Attribute.BigInteger & Schema.Attribute.Required;
+    number: Schema.Attribute.BigInteger;
     project_status: Schema.Attribute.Enumeration<
       ['padding', 'rejected', 'view', 'approved']
     > &
       Schema.Attribute.DefaultTo<'padding'>;
-    publish_by: Schema.Attribute.String & Schema.Attribute.Required;
+    publish_by: Schema.Attribute.String;
     publish_date: Schema.Attribute.DateTime;
     publishedAt: Schema.Attribute.DateTime;
     short_description: Schema.Attribute.String & Schema.Attribute.Required;
     title: Schema.Attribute.String & Schema.Attribute.Required;
-    title_number: Schema.Attribute.String & Schema.Attribute.Required;
+    title_number: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;

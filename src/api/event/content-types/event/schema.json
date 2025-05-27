@@ -11,20 +11,19 @@
     "draftAndPublish": true
   },
   "attributes": {
-    "title": {
+    "Title": {
       "type": "string"
     },
     "description": {
       "type": "text"
     },
     "purpose": {
-      "type": "text",
-      "required": true
+      "type": "text"
     },
     "attachments": {
       "type": "media",
       "multiple": true,
-      "required": false,
+      "required": true,
       "allowedTypes": [
         "images",
         "files",
@@ -33,15 +32,13 @@
       ]
     },
     "manager": {
-      "type": "string",
-      "required": true
+      "type": "string"
     },
     "location": {
       "type": "string"
     },
     "participants": {
-      "type": "biginteger",
-      "required": true
+      "type": "biginteger"
     },
     "number_participants": {
       "type": "biginteger",
@@ -57,8 +54,7 @@
       "type": "datetime"
     },
     "publish_by": {
-      "type": "string",
-      "required": true
+      "type": "string"
     }
   }
 }

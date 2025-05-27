@@ -59,16 +59,13 @@
       ]
     },
     "publish_by": {
-      "type": "string",
-      "required": true
+      "type": "string"
     },
     "number": {
-      "type": "biginteger",
-      "required": true
+      "type": "biginteger"
     },
     "title_number": {
-      "type": "string",
-      "required": true
+      "type": "string"
     }
   }
 }
