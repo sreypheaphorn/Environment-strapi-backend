@@ -1,0 +1,18 @@
+{
+  "kind": "collectionType",
+  "collectionName": "by_mes",
+  "info": {
+    "singularName": "by-me",
+    "pluralName": "by-mes",
+    "displayName": "by_me"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "data_user": {
+      "type": "string",
+      "required": true
+    }
+  }
+}
