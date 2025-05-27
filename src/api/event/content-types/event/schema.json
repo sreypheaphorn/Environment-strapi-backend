@@ -11,46 +11,50 @@
     "draftAndPublish": true
   },
   "attributes": {
-    "cover_image": {
-      "type": "media",
-      "multiple": false,
-      "required": true,
-      "allowedTypes": [
-        "images"
-      ]
-    },
     "Title": {
-      "type": "string",
-      "required": true
+      "type": "string"
     },
     "description": {
       "type": "text"
     },
-    "location": {
+    "purpose": {
       "type": "text"
     },
-    "start_time": {
-      "type": "date"
-    },
-    "end_time": {
-      "type": "date"
-    },
-    "publish_date": {
-      "type": "datetime"
-    },
-    "publish_by": {
-      "type": "string",
-      "required": true
-    },
     "attachments": {
+      "type": "media",
+      "multiple": true,
+      "required": true,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ],
-      "type": "media",
-      "multiple": true
+      ]
+    },
+    "manager": {
+      "type": "string"
+    },
+    "location": {
+      "type": "string"
+    },
+    "participants": {
+      "type": "biginteger"
+    },
+    "number_participants": {
+      "type": "biginteger",
+      "required": true
+    },
+    "start_time": {
+      "type": "datetime"
+    },
+    "end_time": {
+      "type": "datetime"
+    },
+    "publish_date": {
+      "type": "datetime"
+    },
+    "publish_by": {
+      "type": "string"
     }
   }
 }

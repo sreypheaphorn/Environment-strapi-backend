@@ -42,6 +42,11 @@
       "target": "plugin::users-permissions.user",
       "mappedBy": "project"
     },
+    "category": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::category.category"
+    },
     "attachments": {
       "type": "media",
       "multiple": true,
@@ -60,6 +65,14 @@
     },
     "slideLink": {
       "type": "text"
+    "publish_by": {
+      "type": "string"
+    },
+    "number": {
+      "type": "biginteger"
+    },
+    "title_number": {
+      "type": "string"
     }
   }
 }
