@@ -23,7 +23,7 @@
       "type": "text",
       "required": true
     },
-    "users_permissions_users": {
+    "user_name": {
       "type": "relation",
       "relation": "oneToMany",
       "target": "plugin::users-permissions.user",
@@ -47,6 +47,20 @@
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::test-category.test-category"
+    },
+    "attachments": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "slideLink": {
+      "type": "string"
     }
   }
 }

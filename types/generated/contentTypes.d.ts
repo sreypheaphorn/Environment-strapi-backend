@@ -369,6 +369,12 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiByMeByMe extends Struct.CollectionTypeSchema {
+  collectionName: 'by_mes';
+  info: {
+    displayName: 'by_me';
+    pluralName: 'by-mes';
+    singularName: 'by-me';
 export interface ApiAboutAbout extends Struct.CollectionTypeSchema {
   collectionName: 'abouts';
   info: {
@@ -383,6 +389,11 @@ export interface ApiAboutAbout extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    data_user: Schema.Attribute.String & Schema.Attribute.Required;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::by-me.by-me'> &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
     description: Schema.Attribute.Text;
     images: Schema.Attribute.Media<
       'images' | 'files' | 'videos' | 'audios',
@@ -571,6 +582,7 @@ export interface ApiProjectProject extends Struct.CollectionTypeSchema {
     publish_date: Schema.Attribute.DateTime;
     publishedAt: Schema.Attribute.DateTime;
     short_description: Schema.Attribute.String & Schema.Attribute.Required;
+    slideLink: Schema.Attribute.Text;
     title: Schema.Attribute.String & Schema.Attribute.Required;
     title_number: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
@@ -627,6 +639,10 @@ export interface ApiTestProjectTestProject extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
+    attachments: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios',
+      true
+    >;
     content: Schema.Attribute.Text & Schema.Attribute.Required;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -645,6 +661,7 @@ export interface ApiTestProjectTestProject extends Struct.CollectionTypeSchema {
     publish_date: Schema.Attribute.DateTime;
     publishedAt: Schema.Attribute.DateTime;
     short_description: Schema.Attribute.Text & Schema.Attribute.Required;
+    slideLink: Schema.Attribute.String;
     test_category: Schema.Attribute.Relation<
       'oneToOne',
       'api::test-category.test-category'
@@ -653,10 +670,39 @@ export interface ApiTestProjectTestProject extends Struct.CollectionTypeSchema {
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    users_permissions_users: Schema.Attribute.Relation<
+    user_name: Schema.Attribute.Relation<
       'oneToMany',
       'plugin::users-permissions.user'
     >;
+  };
+}
+
+export interface ApiTestTest extends Struct.CollectionTypeSchema {
+  collectionName: 'tests';
+  info: {
+    displayName: 'test';
+    pluralName: 'tests';
+    singularName: 'test';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::test.test'>;
+    name: Schema.Attribute.Text;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
   };
 }
 
@@ -1173,6 +1219,7 @@ declare module '@strapi/strapi' {
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
+      'api::by-me.by-me': ApiByMeByMe;
       'api::about.about': ApiAboutAbout;
       'api::category.category': ApiCategoryCategory;
       'api::event.event': ApiEventEvent;
@@ -1181,6 +1228,7 @@ declare module '@strapi/strapi' {
       'api::project.project': ApiProjectProject;
       'api::test-category.test-category': ApiTestCategoryTestCategory;
       'api::test-project.test-project': ApiTestProjectTestProject;
+      'api::test.test': ApiTestTest;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;

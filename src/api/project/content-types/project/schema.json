@@ -58,6 +58,13 @@
         "audios"
       ]
     },
+    "category": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::category.category"
+    },
+    "slideLink": {
+      "type": "text"
     "publish_by": {
       "type": "string"
     },

@@ -65,17 +65,17 @@
       "inversedBy": "users",
       "configurable": false
     },
-    "test_project": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::test-project.test-project",
-      "inversedBy": "users_permissions_users"
-    },
     "project": {
       "type": "relation",
       "relation": "manyToOne",
       "target": "api::project.project",
       "inversedBy": "users_permissions_users"
+    },
+    "test_project": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::test-project.test-project",
+      "inversedBy": "user_name"
     }
   }
 }
