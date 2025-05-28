@@ -1,6 +1,6 @@
 services:
   strapi:
-    container_name: strapi
+    container_name: strapi-eco
     build: .
     restart: unless-stopped
     env_file: .env
