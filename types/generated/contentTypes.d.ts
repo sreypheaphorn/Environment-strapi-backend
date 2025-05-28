@@ -369,12 +369,6 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
   };
 }
 
-export interface ApiByMeByMe extends Struct.CollectionTypeSchema {
-  collectionName: 'by_mes';
-  info: {
-    displayName: 'by_me';
-    pluralName: 'by-mes';
-    singularName: 'by-me';
 export interface ApiAboutAbout extends Struct.CollectionTypeSchema {
   collectionName: 'abouts';
   info: {
@@ -389,11 +383,6 @@ export interface ApiAboutAbout extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    data_user: Schema.Attribute.String & Schema.Attribute.Required;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<'oneToMany', 'api::by-me.by-me'> &
-      Schema.Attribute.Private;
-    publishedAt: Schema.Attribute.DateTime;
     description: Schema.Attribute.Text;
     images: Schema.Attribute.Media<
       'images' | 'files' | 'videos' | 'audios',
@@ -404,6 +393,31 @@ export interface ApiAboutAbout extends Struct.CollectionTypeSchema {
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
     title: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiByMeByMe extends Struct.CollectionTypeSchema {
+  collectionName: 'by_mes';
+  info: {
+    displayName: 'by_me';
+    pluralName: 'by-mes';
+    singularName: 'by-me';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    data_user: Schema.Attribute.String & Schema.Attribute.Required;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::by-me.by-me'> &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -474,7 +488,7 @@ export interface ApiEventEvent extends Struct.CollectionTypeSchema {
     publish_by: Schema.Attribute.String;
     publish_date: Schema.Attribute.DateTime;
     publishedAt: Schema.Attribute.DateTime;
-    purpose: Schema.Attribute.Text & Schema.Attribute.Required;
+    purpose: Schema.Attribute.Text;
     start_time: Schema.Attribute.DateTime;
     Title: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
@@ -573,18 +587,15 @@ export interface ApiProjectProject extends Struct.CollectionTypeSchema {
       'api::project.project'
     > &
       Schema.Attribute.Private;
-    number: Schema.Attribute.BigInteger;
     project_status: Schema.Attribute.Enumeration<
       ['padding', 'rejected', 'view', 'approved']
     > &
       Schema.Attribute.DefaultTo<'padding'>;
-    publish_by: Schema.Attribute.String;
     publish_date: Schema.Attribute.DateTime;
     publishedAt: Schema.Attribute.DateTime;
     short_description: Schema.Attribute.String & Schema.Attribute.Required;
     slideLink: Schema.Attribute.Text;
     title: Schema.Attribute.String & Schema.Attribute.Required;
-    title_number: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1219,8 +1230,8 @@ declare module '@strapi/strapi' {
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
-      'api::by-me.by-me': ApiByMeByMe;
       'api::about.about': ApiAboutAbout;
+      'api::by-me.by-me': ApiByMeByMe;
       'api::category.category': ApiCategoryCategory;
       'api::event.event': ApiEventEvent;
       'api::profile.profile': ApiProfileProfile;

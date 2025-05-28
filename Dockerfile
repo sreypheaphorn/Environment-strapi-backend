@@ -1,18 +1,22 @@
-# Base image
 FROM node:18
 
 # Set working directory
-WORKDIR /app
+WORKDIR /opt/app
+
+# Copy package files first
+COPY package.json package-lock.json ./
 
 # Install dependencies
-COPY package*.json ./
 RUN npm install
 
-# Copy project files
+# Copy rest of the app
 COPY . .
 
-# Expose Vite dev server port
-EXPOSE 3000
+# Build admin panel
+RUN npm run build
 
-# Start Vite dev server
-CMD ["npm", "run", "dev"]
+# Expose the port
+EXPOSE 1337
+
+# Start Strapi
+CMD ["npm", "start"]
